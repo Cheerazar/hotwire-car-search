@@ -8,14 +8,14 @@ import SearchResults from './SearchResults';
 // example success response for development.
 // duplicating this in state to mimic what it will be like
 // with final app
-import results from './data/results-success-example.json';
+import exampleResults from './data/results-success-example.json';
 
 class App extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      results,
+      results: exampleResults,
     };
   }
 
