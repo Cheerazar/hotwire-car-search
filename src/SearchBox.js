@@ -18,12 +18,16 @@ const Where = glamorous.input({
   display: 'flex',
   maxHeight: 64,
   maxWidth: 320,
+  fontSize: 20,
+  paddingLeft: 12,
 });
 
 const Date = glamorous.input({
   display: 'flex',
   maxHeight: 64,
   maxWidth: 192,
+  fontSize: 20,
+  paddingLeft: 12,
 });
 
 const Search = glamorous.button({
@@ -69,12 +73,12 @@ class SearchBox extends Component {
           onChange={this.handleChangeWhere}
         />
         <Date
-          placeholder="Start Date: MM/DD/YYYY"
+          placeholder="Start: MM/DD/YYYY"
           value={startDate}
           onChange={this.handleChangeStartDate}
         />
         <Date
-          placeholder="End Date: MM/DD/YYYY"
+          placeholder="End: MM/DD/YYYY"
           value={endDate}
           onChange={this.handleChangeEndDate}
         />
