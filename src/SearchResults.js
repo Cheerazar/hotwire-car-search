@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 
 import SearchResult from './SearchResult';
 
-const SearchResults = ({ results }) => results.map(result => <SearchResult result={result} />);
+const SearchResults = ({ results }) =>
+  results.map(result => (<SearchResult
+    result={result}
+    key={result.ResultId}
+  />));
 
 SearchResults.propTypes = {
   results: PropTypes.arrayOf(PropTypes.shape({
