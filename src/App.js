@@ -4,6 +4,7 @@ import { Div } from 'glamorous';
 import './App.css';
 
 import SearchResults from './SearchResults';
+import SearchBox from './SearchBox';
 
 // example success response for development.
 // duplicating this in state to mimic what it will be like
@@ -27,6 +28,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Hotwire Rental Car Search</h1>
         </header>
+        <SearchBox />
         <SearchResults results={results} />
       </Div>
     );
