@@ -29,34 +29,11 @@ const TotalAndRent = glamorous.div({
   justifyContent: 'space-around',
 });
 
-const CarType = glamorous.p({
-  fontSize: 21,
-  fontWeight: 600,
-  marginLeft: 20,
-  marginBottom: 0,
-  marginTop: 15,
-});
-
-const PotentialModels = glamorous.p({
+const Information = glamorous.p({
   fontSize: 13,
-  color: '#E3E3E1',
-  marginTop: 0,
-  marginBottom: 0,
   marginLeft: 20,
-});
-
-const People = glamorous.p({
-  fontSize: 13,
-  marginTop: 0,
   marginBottom: 0,
-  marginLeft: 20,
-});
-
-const Location = glamorous.p({
-  fontSize: 13,
   marginTop: 0,
-  marginBottom: 0,
-  marginLeft: 20,
 });
 
 const SearchResult = ({ result }) => {
@@ -68,12 +45,32 @@ const SearchResult = ({ result }) => {
   return (
     <SearchResultContainer>
       <CarDetailsContainer>
-        <CarType>{CarTypeName}</CarType>
-        <PotentialModels>{PossibleModels}</PotentialModels>
-        <People>{TypicalSeating}</People>
-        <Location>
+        <Information
+          css={{
+            fontSize: 24,
+            fontWeight: 500,
+          }}
+        >
+          {CarTypeName}
+        </Information>
+        <Information
+          css={{
+            color: '#D7D7D5',
+            marginBottom: 10,
+          }}
+        >
+          {PossibleModels}
+        </Information>
+        <Information
+          css={{
+            marginBottom: 12,
+          }}
+        >
+          {TypicalSeating}
+        </Information>
+        <Information>
           Pickup location: {VendorLocationId.slice(0, 3)} - {LocationDescription}
-        </Location>
+        </Information>
       </CarDetailsContainer>
       <TotalAndRent>
         <p>{TotalPrice}</p>
