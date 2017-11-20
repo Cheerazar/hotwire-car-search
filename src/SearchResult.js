@@ -73,7 +73,7 @@ const SearchResult = ({ result }) => {
         </Information>
       </CarDetailsContainer>
       <TotalAndRent>
-        <p>{TotalPrice}</p>
+        <Information css={{ marginLeft: 0 }}>{`$${TotalPrice}`}</Information>
         <a href={DeepLink}>Rent Car</a>
       </TotalAndRent>
     </SearchResultContainer>
