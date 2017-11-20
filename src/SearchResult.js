@@ -17,7 +17,7 @@ const CarDetailsContainer = glamorous.div({
   flex: 3,
   flexDirection: 'column',
   alignItems: 'flex-start',
-  borderRight: '2px solid',
+  borderRight: '1px solid',
   borderRightColor: '#D7D7D5',
 });
 
@@ -29,6 +29,36 @@ const TotalAndRent = glamorous.div({
   justifyContent: 'space-around',
 });
 
+const CarType = glamorous.p({
+  fontSize: 21,
+  fontWeight: 600,
+  marginLeft: 20,
+  marginBottom: 0,
+  marginTop: 15,
+});
+
+const PotentialModels = glamorous.p({
+  fontSize: 13,
+  color: '#E3E3E1',
+  marginTop: 0,
+  marginBottom: 0,
+  marginLeft: 20,
+});
+
+const People = glamorous.p({
+  fontSize: 13,
+  marginTop: 0,
+  marginBottom: 0,
+  marginLeft: 20,
+});
+
+const Location = glamorous.p({
+  fontSize: 13,
+  marginTop: 0,
+  marginBottom: 0,
+  marginLeft: 20,
+});
+
 const SearchResult = ({ result }) => {
   const {
     CarTypeCode, DeepLink, TotalPrice, LocationDescription, VendorLocationId,
@@ -38,12 +68,12 @@ const SearchResult = ({ result }) => {
   return (
     <SearchResultContainer>
       <CarDetailsContainer>
-        <p>{CarTypeName}</p>
-        <p>{PossibleModels}</p>
-        <p>{TypicalSeating}</p>
-        <p>
+        <CarType>{CarTypeName}</CarType>
+        <PotentialModels>{PossibleModels}</PotentialModels>
+        <People>{TypicalSeating}</People>
+        <Location>
           Pickup location: {VendorLocationId.slice(0, 3)} - {LocationDescription}
-        </p>
+        </Location>
       </CarDetailsContainer>
       <TotalAndRent>
         <p>{TotalPrice}</p>
