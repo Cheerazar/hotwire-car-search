@@ -2,42 +2,42 @@ module.exports = {
   env: {
     browser: true,
     jest: true,
-    node: true
+    node: true,
   },
 
-  extends: "airbnb",
+  extends: 'airbnb',
 
-  parser: "babel-eslint",
+  parser: 'babel-eslint',
   parserOptions: {
-    sourceType: "module",
-    allowImportExportEverywhere: true
+    sourceType: 'module',
+    allowImportExportEverywhere: true,
   },
 
   rules: {
-    "consistent-return": ["off"],
+    'consistent-return': ['off'],
 
-    "import/no-named-as-default": ["off"],
+    'import/no-named-as-default': ['off'],
 
-    "space-before-function-paren": [
-      "error",
+    'space-before-function-paren': [
+      'error',
       {
-        anonymous: "ignore",
-        named: "always"
-      }
+        anonymous: 'ignore',
+        named: 'always',
+      },
     ],
 
-    "react/jsx-filename-extension": [
-      "error",
+    'react/jsx-filename-extension': [
+      'error',
       {
-        extensions: [".js", ".jsx"]
-      }
+        extensions: ['.js', '.jsx'],
+      },
     ],
 
-    "react/jsx-max-props-per-line": [
+    'react/jsx-max-props-per-line': [
       1,
       {
-        maximum: 1
-      }
-    ]
-  }
+        maximum: 1,
+      },
+    ],
+  },
 };
