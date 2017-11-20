@@ -49,6 +49,7 @@ const SearchResult = ({ result }) => {
           css={{
             fontSize: 24,
             fontWeight: 500,
+            marginTop: 10,
           }}
         >
           {CarTypeName}
@@ -68,12 +69,13 @@ const SearchResult = ({ result }) => {
         >
           {TypicalSeating}
         </Information>
-        <Information>
+        <Information css={{ marginBottom: 10 }}>
           Pickup location: {VendorLocationId.slice(0, 3)} - {LocationDescription}
         </Information>
       </CarDetailsContainer>
       <TotalAndRent>
-        <Information css={{ marginLeft: 0 }}>{`$${TotalPrice}`}</Information>
+        <Information css={{ marginLeft: 0, fontSize: 18 }}>{`$${TotalPrice}`}</Information>
+        <Information css={{ marginLeft: 0, marginTop: -12 }}>Total</Information>
         <a href={DeepLink}>Rent Car</a>
       </TotalAndRent>
     </SearchResultContainer>
