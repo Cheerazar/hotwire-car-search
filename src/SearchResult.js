@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import glamorous from 'glamorous';
 
+import RentCar from './RentCar';
+
 import types from './data/car-types.json';
 
 const SearchResultContainer = glamorous.div({
@@ -76,7 +78,7 @@ const SearchResult = ({ result }) => {
       <TotalAndRent>
         <Information css={{ marginLeft: 0, fontSize: 18 }}>{`$${TotalPrice}`}</Information>
         <Information css={{ marginLeft: 0, marginTop: -12 }}>Total</Information>
-        <a href={DeepLink}>Rent Car</a>
+        <RentCar link={DeepLink} />
       </TotalAndRent>
     </SearchResultContainer>
   );
