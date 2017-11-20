@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import glamorous from 'glamorous';
+import PropTypes from 'prop-types';
 
 const SearchBoxContainer = glamorous.div({
   display: 'flex',
@@ -40,20 +41,43 @@ class SearchBox extends Component {
 
     this.state = {
       where: '',
+      startDate: '',
+      endDate: '',
     };
   }
 
+  handleChangeWhere = ({ target: { value } }) => {
+    this.setState({ where: value });
+  };
+
+  handleChangeStartDate = ({ target: { value } }) => {
+    this.setState({ startDate: value });
+  };
+
+  handleChangeEndDate = ({ target: { value } }) => {
+    this.setState({ endDate: value });
+  };
+
   render () {
-    const { where } = this.state;
+    const { where, startDate, endDate } = this.state;
 
     return (
       <SearchBoxContainer>
         <Where
           placeholder="Where"
           value={where}
+          onChange={this.handleChangeWhere}
         />
-        <Date placeholder="Start Date: MM/DD/YYYY" />
-        <Date placeholder="End Date: MM/DD/YYYY" />
+        <Date
+          placeholder="Start Date: MM/DD/YYYY"
+          value={startDate}
+          onChange={this.handleChangeStartDate}
+        />
+        <Date
+          placeholder="End Date: MM/DD/YYYY"
+          value={endDate}
+          onChange={this.handleChangeEndDate}
+        />
         <Search>Search</Search>
       </SearchBoxContainer>
     );
@@ -61,5 +85,3 @@ class SearchBox extends Component {
 }
 
 export default SearchBox;
-
-// 472 236 236 64
