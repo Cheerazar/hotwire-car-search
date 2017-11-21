@@ -37,6 +37,9 @@ const Search = glamorous.button({
   backgroundColor: '#373737',
   color: '#FFFFFF',
   fontSize: 14,
+  ':hover': {
+    cursor: 'pointer',
+  },
 });
 
 class SearchBox extends Component {
