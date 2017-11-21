@@ -10,8 +10,16 @@ const SearchResultContainer = glamorous.div({
   display: 'flex',
   maxWidth: 730,
   backgroundColor: '#FFFFFF',
+  borderWidth: 2,
+  borderStyle: 'solid',
+  borderColor: '#FFFFFF',
   margin: 'auto',
   marginBottom: 10,
+  ':hover': {
+    borderColor: '#373737',
+    borderWidth: 2,
+    borderStyle: 'solid',
+  },
 });
 
 const CarDetailsContainer = glamorous.div({
