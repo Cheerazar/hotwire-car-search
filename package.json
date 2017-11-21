@@ -21,6 +21,8 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
+    "deploy":
+      "aws s3 cp build s3://hotwiresearch-hosting-mobilehub-138361554 --recursive",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
