@@ -5,23 +5,20 @@ import './App.css';
 
 import SearchResults from './SearchResults';
 import SearchBox from './SearchBox';
-
-// example success response for development.
-// duplicating this in state to mimic what it will be like
-// with final app
-import exampleResults from './data/results-success-example.json';
+import Loading from './Loading';
 
 class App extends Component {
   constructor (props) {
     super(props);
 
     this.state = {
-      results: exampleResults,
+      results: [],
+      isLoading: false,
     };
   }
 
   render () {
-    const { results } = this.state;
+    const { results, isLoading } = this.state;
 
     return (
       <Div className="App-container">
@@ -30,6 +27,7 @@ class App extends Component {
         </header>
         <SearchBox />
         <SearchResults results={results} />
+        {isLoading && <Loading />}
       </Div>
     );
   }

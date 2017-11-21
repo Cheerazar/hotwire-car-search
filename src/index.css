@@ -9,3 +9,8 @@ input {
   width: 100%;
   height: 100%;
 }
+
+svg path,
+svg rect {
+  fill: #373737;
+}
