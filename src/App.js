@@ -15,20 +15,31 @@ class App extends Component {
     this.state = {
       results: [],
       isLoading: false,
+      noResults: false,
     };
   }
 
   handleSearch = ({ where, startDate, endDate }) => {
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, results: [], noResults: false });
     axios
       .get(`https://vast-chamber-42459.herokuapp.com/api/search?where=${
         where
       }&startDate=${encodeURIComponent(startDate)}&endDate=${encodeURIComponent(endDate)}`)
-      .then((response) => {
-        this.setState({
-          results: response.data.results,
-          isLoading: false,
-        });
+      .then((res) => {
+        if (res.data.statusCode === '0' && res.data.statusDesc === 'success') {
+          this.setState({
+            results: res.data.results,
+            isLoading: false,
+          });
+        } else if (
+          res.data.statusCode === '100' &&
+          res.data.statusDesc === 'no results were found'
+        ) {
+          this.setState({
+            noResults: true,
+            isLoading: false,
+          });
+        }
       })
       .catch((err) => {
         this.setState({ isLoading: false });
@@ -37,7 +48,7 @@ class App extends Component {
   };
 
   render () {
-    const { results, isLoading } = this.state;
+    const { results, isLoading, noResults } = this.state;
 
     return (
       <Div className="App-container">
@@ -47,6 +58,7 @@ class App extends Component {
         <SearchBox handleSearch={this.handleSearch} />
         <SearchResults results={results} />
         {isLoading && <Loading />}
+        {noResults && <div style={{ fontSize: 32, fontWeight: 600 }}>No results were found</div>}
       </Div>
     );
   }

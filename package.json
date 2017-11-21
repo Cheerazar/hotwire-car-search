@@ -22,10 +22,9 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "prebuild":
-      "aws s3 cp s3://hotwiresearch-hosting-mobilehub-138361554/aws-exports.js ./src/aws-exports.js",
     "deploy":
       "aws s3 cp build s3://hotwiresearch-hosting-mobilehub-138361554 --recursive",
+    "build-and-deploy": "yarn build && yarn deploy",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
