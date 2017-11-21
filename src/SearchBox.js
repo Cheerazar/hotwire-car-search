@@ -40,6 +40,10 @@ const Search = glamorous.button({
 });
 
 class SearchBox extends Component {
+  static propTypes = {
+    handleSearch: PropTypes.func.isRequired,
+  };
+
   constructor (props) {
     super(props);
 
@@ -49,6 +53,11 @@ class SearchBox extends Component {
       endDate: '',
     };
   }
+
+  handleClick = () => {
+    const { where, startDate, endDate } = this.state;
+    this.props.handleSearch({ where, startDate, endDate });
+  };
 
   handleChangeWhere = ({ target: { value } }) => {
     this.setState({ where: value });
@@ -82,7 +91,7 @@ class SearchBox extends Component {
           value={endDate}
           onChange={this.handleChangeEndDate}
         />
-        <Search>Search</Search>
+        <Search onClick={this.handleClick}>Search</Search>
       </SearchBoxContainer>
     );
   }
