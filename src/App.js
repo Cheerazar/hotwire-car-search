@@ -8,6 +8,8 @@ import SearchResults from './SearchResults';
 import SearchBox from './SearchBox';
 import Loading from './Loading';
 
+import processCarTypes from './utils/processCarTypes';
+
 class App extends Component {
   constructor (props) {
     super(props);
@@ -16,11 +18,17 @@ class App extends Component {
       results: [],
       isLoading: false,
       noResults: false,
+      carTypes: {},
     };
   }
 
   handleSearch = ({ where, startDate, endDate }) => {
-    this.setState({ isLoading: true, results: [], noResults: false });
+    this.setState({
+      isLoading: true,
+      results: [],
+      noResults: false,
+      carTypes: {},
+    });
     axios
       .get(`https://vast-chamber-42459.herokuapp.com/api/search?where=${
         where
@@ -30,6 +38,7 @@ class App extends Component {
           this.setState({
             results: res.data.results,
             isLoading: false,
+            carTypes: processCarTypes(res.data.carTypes),
           });
         } else if (
           res.data.statusCode === '100' &&
@@ -38,6 +47,7 @@ class App extends Component {
           this.setState({
             noResults: true,
             isLoading: false,
+            carTypes: {},
           });
         }
       })
@@ -48,7 +58,9 @@ class App extends Component {
   };
 
   render () {
-    const { results, isLoading, noResults } = this.state;
+    const {
+      carTypes, results, isLoading, noResults,
+    } = this.state;
 
     return (
       <Div className="App-container">
@@ -56,7 +68,10 @@ class App extends Component {
           <h1 className="App-title">Hotwire Rental Car Search</h1>
         </header>
         <SearchBox handleSearch={this.handleSearch} />
-        <SearchResults results={results} />
+        <SearchResults
+          results={results}
+          carTypes={carTypes}
+        />
         {isLoading && <Loading />}
         {noResults && <div style={{ fontSize: 32, fontWeight: 600 }}>No results were found</div>}
       </Div>

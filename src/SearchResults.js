@@ -3,13 +3,22 @@ import PropTypes from 'prop-types';
 
 import SearchResult from './SearchResult';
 
-const SearchResults = ({ results }) =>
-  results.map(result => (<SearchResult
-    result={result}
-    key={result.ResultId}
-  />));
+const SearchResults = ({ results, carTypes }) =>
+  results.map(result => (
+    <SearchResult
+      result={result}
+      carType={carTypes[result.CarTypeCode]}
+      key={result.ResultId}
+    />
+  ));
 
 SearchResults.propTypes = {
+  carTypes: PropTypes.objectOf(PropTypes.shape({
+    TypicalSeating: PropTypes.string.isRequired,
+    CarTypeName: PropTypes.string.isRequired,
+    PossibleFeatures: PropTypes.string.isRequired,
+    PossibleModels: PropTypes.string.isRequired,
+  })),
   results: PropTypes.arrayOf(PropTypes.shape({
     CurrencyCode: PropTypes.string.isRequired,
     DeepLink: PropTypes.string.isRequired,
@@ -26,7 +35,7 @@ SearchResults.propTypes = {
     PickupTime: PropTypes.string.isRequired,
     LocationDescription: PropTypes.string.isRequired,
     MileageDescription: PropTypes.string.isRequired,
-    PickupAirport: PropTypes.string.isRequired,
+    PickupAirport: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
     RentalDays: PropTypes.string.isRequired,
     VendorLocationId: PropTypes.string.isRequired,
   })),

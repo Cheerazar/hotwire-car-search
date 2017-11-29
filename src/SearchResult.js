@@ -4,8 +4,6 @@ import glamorous from 'glamorous';
 
 import RentCar from './RentCar';
 
-import types from './data/car-types.json';
-
 const SearchResultContainer = glamorous.div({
   display: 'flex',
   maxWidth: 730,
@@ -46,11 +44,11 @@ const Information = glamorous.p({
   marginTop: 0,
 });
 
-const SearchResult = ({ result }) => {
+const SearchResult = ({ result, carType }) => {
   const {
-    CarTypeCode, DeepLink, TotalPrice, LocationDescription, VendorLocationId,
+    DeepLink, TotalPrice, LocationDescription, VendorLocationId,
   } = result;
-  const { TypicalSeating, CarTypeName, PossibleModels } = types[CarTypeCode];
+  const { TypicalSeating, CarTypeName, PossibleModels } = carType;
 
   return (
     <SearchResultContainer>
@@ -93,6 +91,12 @@ const SearchResult = ({ result }) => {
 };
 
 SearchResult.propTypes = {
+  carType: PropTypes.shape({
+    TypicalSeating: PropTypes.string.isRequired,
+    CarTypeName: PropTypes.string.isRequired,
+    PossibleFeatures: PropTypes.string.isRequired,
+    PossibleModels: PropTypes.string.isRequired,
+  }).isRequired,
   result: PropTypes.shape({
     CurrencyCode: PropTypes.string.isRequired,
     DeepLink: PropTypes.string.isRequired,
@@ -109,7 +113,7 @@ SearchResult.propTypes = {
     PickupTime: PropTypes.string.isRequired,
     LocationDescription: PropTypes.string.isRequired,
     MileageDescription: PropTypes.string.isRequired,
-    PickupAirport: PropTypes.string.isRequired,
+    PickupAirport: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
     RentalDays: PropTypes.string.isRequired,
     VendorLocationId: PropTypes.string.isRequired,
   }).isRequired,

@@ -13,6 +13,7 @@
     "eslint-plugin-react": "^7.5.1",
     "glamor": "^2.20.40",
     "glamorous": "^4.11.0",
+    "lodash": "^4.17.4",
     "prettier-eslint": "^8.2.2",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
@@ -22,8 +23,7 @@
     "react-scripts": "1.0.17"
   },
   "scripts": {
-    "deploy":
-      "aws s3 cp build s3://hotwiresearch-hosting-mobilehub-138361554 --recursive",
+    "deploy": "aws s3 cp build s3://hotwiresearch-hosting-mobilehub-138361554 --recursive",
     "build-and-deploy": "yarn build && yarn deploy",
     "start": "react-scripts start",
     "build": "react-scripts build",
